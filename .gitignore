@@ -73,6 +73,9 @@ crashlytics-build.properties
 # iOS
 iOS_App/
 
+# Android
+Android_App/
+
 
 
 
