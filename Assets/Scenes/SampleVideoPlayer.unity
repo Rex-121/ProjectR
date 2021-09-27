@@ -191,7 +191,7 @@ Camera:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 4
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -404,6 +404,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MediaPlayerUI
       objectReference: {fileID: 0}
+    - target: {fileID: 3271537135850430380, guid: 9ca1c2df393744b079bfe6e22cbff209, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3271537135850430384, guid: 9ca1c2df393744b079bfe6e22cbff209, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -596,6 +600,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3271537136772197086, guid: 9ca1c2df393744b079bfe6e22cbff209, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3271537136917965299, guid: 9ca1c2df393744b079bfe6e22cbff209, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -760,6 +768,10 @@ PrefabInstance:
     - target: {fileID: 1444278556576358220, guid: 4d161a3713e4f42cabde412a3c852d3a, type: 3}
       propertyPath: m_Name
       value: VideoPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444278556576358220, guid: 4d161a3713e4f42cabde412a3c852d3a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1444278556576358223, guid: 4d161a3713e4f42cabde412a3c852d3a, type: 3}
       propertyPath: m_RootOrder
