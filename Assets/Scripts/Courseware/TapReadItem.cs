@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 
 public class TapReadItem : MonoBehaviour
@@ -20,10 +17,13 @@ public class TapReadItem : MonoBehaviour
             this.audioUri = audioUri;
             this.imageUri = imageUri;
         }
+
     }
 
+    public System.Action<TapReadItem> DidTapItem;
+
     [SerializeField]
-    private Usage item;
+    public Usage item;
 
 
     public void SetItem(Usage item) {
@@ -32,6 +32,10 @@ public class TapReadItem : MonoBehaviour
         audioDownload.uri = item.audioUri;
     }
 
+    private void OnMouseDown()
+    {
+        DidTapItem(this);
+    }
 
     [SerializeField]
     private ImageDownload imageDownload;
@@ -39,7 +43,7 @@ public class TapReadItem : MonoBehaviour
     [SerializeField]
     private AudioDownload audioDownload;
 
-    public SoundDefaultEffect soundDefaultEffect;
+    //public SoundDefaultEffect soundDefaultEffect;
 
 
     public AudioClip audioClip
@@ -50,27 +54,4 @@ public class TapReadItem : MonoBehaviour
         }
     }
 
-
-    void Start()
-    {
-        soundDefaultEffect.gameObject.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (audioClip != null)
-        {
-            soundDefaultEffect.gameObject.SetActive(true);
-        }
-    }
-
-
-    public void Play()
-    {
-        if (audioClip != null)
-        {
-            soundDefaultEffect.Play();
-        }
-    }
 }
