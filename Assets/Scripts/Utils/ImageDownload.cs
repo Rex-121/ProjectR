@@ -19,10 +19,7 @@ public class ImageDownload : MonoBehaviour
     {
         WebReqeust.GetTexture(uri, (Texture2D texture2D) =>
         {
-            Debug.Log(texture2D.texelSize);
-            Debug.Log(texture2D.width);
-            Debug.Log(texture2D.height);
-
+            
             Sprite sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(.5f, .5f));
 
             spriteRenderer.sprite = sprite;

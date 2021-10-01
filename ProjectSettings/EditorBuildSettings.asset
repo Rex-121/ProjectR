@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 6beecb07bdba4410c8e7f9da11b86756
+  - enabled: 1
     path: Assets/Scenes/SampleVideoPlayer.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/RooboCanvas.unity
     guid: 3aa9f965a04b24d5998aab401329649b
   - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: 6beecb07bdba4410c8e7f9da11b86756
-  - enabled: 1
-    path: Assets/Scenes/TapRead.unity
+    path: Assets/Scenes/Courseware.unity
     guid: 37452939b409344c0ba4f33b44de9236
   m_configObjects: {}

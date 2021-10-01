@@ -16,6 +16,9 @@ public class RatingStars : MonoBehaviour
     private DOTweenAnimation[] stars;
 
 
+    public System.Action DidEndRating;
+
+
     private void OnMouseDown()
     {
 
