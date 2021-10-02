@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class TapReadCourseware : MonoBehaviour
+public class TapReadCourseware : CoursewareMono
 {
 
 
@@ -14,7 +14,7 @@ public class TapReadCourseware : MonoBehaviour
 
     public GameObject itemPre;
 
-    public System.Action<TapReadCourseware> DidEndCourseware;
+    //public System.Action<TapReadCourseware> DidEndCourseware;
 
     private TapReadItem _selectedItem;
     private TapReadItem selectedItem
@@ -107,9 +107,13 @@ public class TapReadCourseware : MonoBehaviour
 
     Coroutine cor;
 
+    bool didEndThisCourse = false;
 
     public void DidSelectedNextOrPreItem(string value)
     {
+
+        if (didEndThisCourse) return;
+
         int c = currentIndex;
 
         switch (value)
@@ -122,7 +126,8 @@ public class TapReadCourseware : MonoBehaviour
                 var nowValue = currentIndex + 1;
 
                 if (nowValue > list.Length - 1)
-                {
+                {   
+                    didEndThisCourse = true;
                     DidEndCourseware(this);
                 }
                 else

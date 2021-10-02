@@ -11,26 +11,73 @@ public class CoursewareManager : MonoBehaviour
 
     public GameObject ratingStars;
 
+    private Courseware.Type[] coursewares = { Courseware.Type.TapRead, Courseware.Type.Sorting };
+
+    private int currentIndex = -1;
+
     void Start()
     {
 
-        var g = Resources.Load<GameObject>("Prefabs/Courseware/TapRead/TapRead");
+        //var type = coursewares[currentIndex];
 
-        var go = Instantiate(g);
+        //var g = Resources.Load<GameObject>(Courseware.PathOfPrefab(type));
 
-        go.GetComponent<TapReadCourseware>().DidEndCourseware += DidEndCourseware;
+        //var go = Instantiate(g);
 
-        go.transform.parent = stage;
+        //go.GetComponent<CoursewareMono>().DidEndCourseware += DidEndCourseware;
+
+        //go.transform.parent = stage;
+
+        NextCourse();
+
+    }
+
+    // 下一课
+    public Courseware.Type NextCourse()
+    {
+
+        currentIndex += 1;
+
+        ClearStage();
+
+        var type = coursewares[currentIndex];
+
+        var prefab = Resources.Load<GameObject>(Courseware.PathOfPrefab(type));
+
+        AddToStage(Instantiate(prefab));
+
+        return type;
+    }
 
 
-
+    private void ClearStage() {
+        for (int i = 0; i < stage.childCount; i ++)
+        {
+            var child = stage.GetChild(i);
+            child.GetComponent<CoursewareMono>().DidEndCourseware = null;
+            Destroy(child.gameObject);
+        }
     }
 
 
 
+    private CoursewareMono AddToStage(GameObject gameObject)
+    {
+        var course = gameObject.GetComponent<CoursewareMono>();
+
+        course.DidEndCourseware += DidEndCourseware;
+
+        course.transform.parent = stage;
+
+        Debug.Log(stage.childCount);
+
+        return course;
+    }
+
 
     public void DidEndCourseware(MonoBehaviour b)
     {
+        aboveStage.gameObject.SetActive(true);
 
         var gb = Instantiate<GameObject>(ratingStars);
 
@@ -40,9 +87,42 @@ public class CoursewareManager : MonoBehaviour
 
         DelayController.Standard.DelayToCall(3, () =>
         {
+            aboveStage.gameObject.SetActive(false);
             Destroy(gb);
+            NextCourse();
         });
     }
 
+
+}
+
+
+public class Courseware
+{
+
+    public enum Type
+    {
+        TapRead, Sorting
+    }
+
+    public static string PathOfPrefab(Courseware.Type type) {
+
+        switch (type)
+        {
+            case Type.TapRead:
+                return "Prefabs/Courseware/TapRead/TapRead";
+            case Type.Sorting:
+                return "Prefabs/Courseware/Sorting/Sorting";
+        }
+        return "";
+    }
+
+
+}
+
+
+public class CoursewareMono : MonoBehaviour
+{
+    public System.Action<TapReadCourseware> DidEndCourseware;
 
 }
