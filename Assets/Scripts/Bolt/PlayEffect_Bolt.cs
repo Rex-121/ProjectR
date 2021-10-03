@@ -27,6 +27,10 @@ public class PlayEffect_Bolt : Unit
 
         controlInput = ControlInput("input", Play);
 
+        Requirement(valueInput, controlInput);
+
+        Succession(controlInput, controlOutput);
+        
     }
 
 

@@ -38,7 +38,7 @@ public class CoursewareManager : MonoBehaviour
 
         currentIndex += 1;
 
-        ClearStage();
+        //ClearStage();
 
         var type = coursewares[currentIndex];
 
@@ -89,6 +89,7 @@ public class CoursewareManager : MonoBehaviour
         {
             aboveStage.gameObject.SetActive(false);
             Destroy(gb);
+            Destroy(b.gameObject);
             NextCourse();
         });
     }
@@ -123,6 +124,6 @@ public class Courseware
 
 public class CoursewareMono : MonoBehaviour
 {
-    public System.Action<TapReadCourseware> DidEndCourseware;
+    public System.Action<CoursewareMono> DidEndCourseware;
 
 }

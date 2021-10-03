@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Bolt;
-public class Sorting : CoursewareMono
+public class SortingCourseware : CoursewareMono
 {
     [Header("FLAT")]
     [SerializeField]
@@ -68,14 +68,56 @@ public class Sorting : CoursewareMono
 
             ab.RemoveAt(0);
 
+
+            sortVariables.Add(sortItem.GetComponent<Variables>());
+
             sortItem.transform.parent = sortItems;
             sortItem.transform.position = position;
         }
+
+
+       
+        
     }
+
+
+    List<Bolt.Variables> sortVariables = new List<Bolt.Variables>();
+
+    bool allRight = false;
+
+    [SerializeField]
+    Transform winner;
+
+    [SerializeField]
+    ParticleSystem particle;
 
     // Update is called once per frame
     void Update()
     {
+
+        if (allRight)
+        {
+            return;
+        }
+
+        foreach (var item in sortVariables)
+        {
+            var a = item.declarations.Get<bool>("isLocked");
+
+            if (!a) return;
+
+        }
+
+
+        allRight = true;
+
+        winner.gameObject.SetActive(true);
+        particle.Play();
+
+        DelayController.Standard.DelayToCall(3, () =>
+        {
+            DidEndCourseware(this);
+        });
 
     }
 }
