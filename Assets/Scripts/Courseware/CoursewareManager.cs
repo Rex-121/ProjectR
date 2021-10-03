@@ -5,6 +5,7 @@ using UnityEngine;
 public class CoursewareManager : MonoBehaviour
 {
 
+
     public Transform stage;
 
     public Transform aboveStage;
@@ -17,16 +18,6 @@ public class CoursewareManager : MonoBehaviour
 
     void Start()
     {
-
-        //var type = coursewares[currentIndex];
-
-        //var g = Resources.Load<GameObject>(Courseware.PathOfPrefab(type));
-
-        //var go = Instantiate(g);
-
-        //go.GetComponent<CoursewareMono>().DidEndCourseware += DidEndCourseware;
-
-        //go.transform.parent = stage;
 
         NextCourse();
 
@@ -68,8 +59,6 @@ public class CoursewareManager : MonoBehaviour
         course.DidEndCourseware += DidEndCourseware;
 
         course.transform.parent = stage;
-
-        Debug.Log(stage.childCount);
 
         return course;
     }
