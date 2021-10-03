@@ -135,7 +135,7 @@ public class Courseware
 
     public enum Type
     {
-        TapRead, Sorting, VoiceCheck
+        TapRead, Sorting, VoiceCheck, Choice
     }
 
     public static string PathOfPrefab(Courseware.Type type)
@@ -149,6 +149,8 @@ public class Courseware
                 return "Prefabs/Courseware/Sorting/Sorting";
             case Type.VoiceCheck:
                 return "Prefabs/Courseware/VoiceCheck";
+            case Type.Choice:
+                return "Prefabs/Courseware/Choice";
         }
         return "";
     }

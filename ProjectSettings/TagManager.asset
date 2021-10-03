@@ -12,9 +12,9 @@ TagManager:
   - Water
   - UI
   - Background
+  - Courseware
   - Midground
   - Foreground
-  - 
   - 
   - 
   - 
@@ -44,9 +44,12 @@ TagManager:
   - name: Background
     uniqueID: 3687783879
     locked: 0
-  - name: Midground
+  - name: Courseware
     uniqueID: 1990546243
     locked: 0
-  - name: Foreground
+  - name: Midground
     uniqueID: 4136691835
+    locked: 0
+  - name: Foreground
+    uniqueID: 2438216223
     locked: 0

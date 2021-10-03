@@ -530,11 +530,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5069168698650182622, guid: 3f36eb0ff453348f6854fda6f1feb63c, type: 3}
       propertyPath: coursewares.Array.size
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5069168698650182622, guid: 3f36eb0ff453348f6854fda6f1feb63c, type: 3}
       propertyPath: findCoursewareInEditor
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5069168698650182622, guid: 3f36eb0ff453348f6854fda6f1feb63c, type: 3}
       propertyPath: coursewares.Array.data[0]
