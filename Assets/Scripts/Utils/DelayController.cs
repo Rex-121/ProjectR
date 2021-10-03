@@ -10,7 +10,10 @@ public class DelayController : MonoBehaviour
     {
         if (Standard == null) {
             Standard = this;
-            DontDestroyOnLoad(Standard);
+            DontDestroyOnLoad(gameObject);
+        } else
+        {
+            Destroy(gameObject);
         }
     }
 

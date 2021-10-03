@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class VoiceCheckCourseware : MonoBehaviour
+using Bolt;
+public class VoiceCheckCourseware : CoursewareMono
 {
 
 
@@ -15,19 +15,31 @@ public class VoiceCheckCourseware : MonoBehaviour
     void Start()
     {
 
-        foreach (var position in flatPosition)
+        for (int i = 0; i < flatPosition.Length; i++)
         {
+            var position = flatPosition[i];
+
             var flatItem = Instantiate(itemPre);
+            var flow = flatItem.GetComponent<Variables>();
+
+            if (i == 2)
+            {
+                flow.declarations.Set("isRightAnswer", i == 2);
+                flow.declarations.Set("CoursewareHandler", this);
+            }
+
 
             flatItem.transform.parent = transform;
             flatItem.transform.position = position;
         }
 
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void SelectedGameObject(GameObject obj)
     {
-        
+        Debug.Log("fasdfasd");
+        DidEndCourseware(this);
     }
+
 }

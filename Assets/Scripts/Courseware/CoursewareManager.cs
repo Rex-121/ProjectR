@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Bolt;
+using Ludiq;
+
 public class CoursewareManager : MonoBehaviour
 {
 
+    public static CoursewareManager Standard;
 
     public Transform stage;
 
@@ -12,24 +16,48 @@ public class CoursewareManager : MonoBehaviour
 
     public GameObject ratingStars;
 
+    [SerializeField]
     private Courseware.Type[] coursewares = { Courseware.Type.TapRead, Courseware.Type.Sorting };
 
     private int currentIndex = -1;
 
+    [SerializeField]
+    private CoursewareMono currentCourseware;
+
+    [SerializeField]
+    private bool findCoursewareInEditor = false;
+
+    private void Awake()
+    {
+        if (Standard == null)
+        {
+            Standard = this;
+            DontDestroyOnLoad(this);
+        }
+        else { Destroy(gameObject); }
+    }
+
     void Start()
     {
+
+        if (findCoursewareInEditor)
+        {
+            currentCourseware = FindObjectOfType<CoursewareMono>();
+            currentCourseware.DidEndCourseware += DidEndCourseware;
+        }
 
         NextCourse();
 
     }
 
     // 下一课
-    public Courseware.Type NextCourse()
+    public void NextCourse()
     {
 
         currentIndex += 1;
 
         //ClearStage();
+        if (NoMoreCourseware()) return;
 
         var type = coursewares[currentIndex];
 
@@ -37,12 +65,22 @@ public class CoursewareManager : MonoBehaviour
 
         AddToStage(Instantiate(prefab));
 
-        return type;
+        return;
+    }
+
+    private bool NoMoreCourseware()
+    {
+        if (currentIndex >= coursewares.Length)
+        {
+            return true;
+        }
+        return false;
     }
 
 
-    private void ClearStage() {
-        for (int i = 0; i < stage.childCount; i ++)
+    private void ClearStage()
+    {
+        for (int i = 0; i < stage.childCount; i++)
         {
             var child = stage.GetChild(i);
             child.GetComponent<CoursewareMono>().DidEndCourseware = null;
@@ -55,6 +93,8 @@ public class CoursewareManager : MonoBehaviour
     private CoursewareMono AddToStage(GameObject gameObject)
     {
         var course = gameObject.GetComponent<CoursewareMono>();
+
+        currentCourseware = course;
 
         course.DidEndCourseware += DidEndCourseware;
 
@@ -83,7 +123,10 @@ public class CoursewareManager : MonoBehaviour
         });
     }
 
-
+    public void SelectedGameObject(GameObject obj)
+    {
+        currentCourseware?.SelectedGameObject(obj);
+    }
 }
 
 
@@ -92,10 +135,11 @@ public class Courseware
 
     public enum Type
     {
-        TapRead, Sorting
+        TapRead, Sorting, VoiceCheck
     }
 
-    public static string PathOfPrefab(Courseware.Type type) {
+    public static string PathOfPrefab(Courseware.Type type)
+    {
 
         switch (type)
         {
@@ -103,6 +147,8 @@ public class Courseware
                 return "Prefabs/Courseware/TapRead/TapRead";
             case Type.Sorting:
                 return "Prefabs/Courseware/Sorting/Sorting";
+            case Type.VoiceCheck:
+                return "Prefabs/Courseware/VoiceCheck";
         }
         return "";
     }
@@ -113,6 +159,50 @@ public class Courseware
 
 public class CoursewareMono : MonoBehaviour
 {
+
     public System.Action<CoursewareMono> DidEndCourseware;
+
+
+    public virtual void SelectedGameObject(GameObject obj) { }
+
+}
+
+
+
+[UnitCategory("Courseware")]
+[UnitTitle("CoursewareDidSelectItem")]
+public class CoursewareManager_Bolt : Unit
+{
+    [DoNotSerialize]
+    public ControlInput controlInput;
+
+    [DoNotSerialize]
+    public ControlOutput controlOutput;
+
+    [DoNotSerialize]
+    public ValueInput gameObject;
+
+    protected override void Definition()
+    {
+        controlInput = ControlInput("input", DidSelectItem);
+
+        controlOutput = ControlOutput("out");
+
+        gameObject = ValueInput(typeof(GameObject), "gameObject");
+
+        Requirement(gameObject, controlInput);
+
+        Succession(controlInput, controlOutput);
+    }
+
+
+    ControlOutput DidSelectItem(Flow flow)
+    {
+
+        CoursewareManager.Standard.SelectedGameObject(flow.GetValue<GameObject>(gameObject));
+
+        return controlOutput;
+    }
+
 
 }
