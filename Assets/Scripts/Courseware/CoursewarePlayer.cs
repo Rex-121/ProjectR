@@ -7,7 +7,7 @@ public class CoursewarePlayer : CoursewareMono
 
 
 
-    public CoursewareDefault_SO courswerItem;
+    //public CoursewareDefault_SO courswerItem;
 
 
     private void Start()

@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Bolt;
-public class SortingCourseware : CoursewareMono
+public class SortingCourseware : CoursewarePlayer
 {
     [Header("FLAT")]
     [SerializeField]
     Transform flat;
-    [SerializeField]
-    GameObject flatPrefab;
+    [HideInInspector]
+    public GameObject flatPrefab;
     [SerializeField]
     Vector2[] flatPosition;
 
     [Header("SORT")]
     [SerializeField]
     Transform sortItems;
-    [SerializeField]
-    GameObject sortPrefab;
+    [HideInInspector]
+    public GameObject sortPrefab;
     [SerializeField]
     Vector2[] sortPosition;
 

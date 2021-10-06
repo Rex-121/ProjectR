@@ -17,7 +17,7 @@ public class CoursewareManager : MonoBehaviour
     public GameObject ratingStars;
 
     [SerializeField]
-    private Courseware.Type[] coursewares = { Courseware.Type.TapRead, Courseware.Type.Sorting };
+    private CoursewareDefault_SO[] coursewares;//= { Courseware.Type.TapRead, Courseware.Type.Sorting };
 
     private int currentIndex = -1;
 
@@ -61,9 +61,11 @@ public class CoursewareManager : MonoBehaviour
 
         var type = coursewares[currentIndex];
 
-        var prefab = Resources.Load<GameObject>(Courseware.PathOfPrefab(type));
+        var prefab = Instantiate(type.CoursewarePrefab);
 
-        AddToStage(Instantiate(prefab));
+        type.SetUpCourseware(prefab.GetComponent<CoursewarePlayer>());
+
+        AddToStage(prefab);
 
         return;
     }

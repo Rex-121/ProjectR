@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class TapReadCourseware : CoursewareMono
+public class TapReadCourseware : CoursewarePlayer
 {
 
 
@@ -12,7 +12,10 @@ public class TapReadCourseware : CoursewareMono
 
     AudioSource audioSource;
 
-    public GameObject itemPre;
+    /// <summary>
+    /// 点击内容
+    /// </summary>
+    public GameObject tapItemPre;
 
     //public System.Action<TapReadCourseware> DidEndCourseware;
 
@@ -38,6 +41,8 @@ public class TapReadCourseware : CoursewareMono
 
     }
 
+   
+
     /// <summary>
     /// 播放音乐特效
     /// </summary>
@@ -45,7 +50,7 @@ public class TapReadCourseware : CoursewareMono
     SoundDefaultEffect soundDefaultEffect;
 
 
-    ImageWithAudio_SO[] list;
+    public ImageWithAudio_SO[] list;
 
 
     Dictionary<int, GameObject> listDic = new Dictionary<int, GameObject>();
@@ -74,7 +79,7 @@ public class TapReadCourseware : CoursewareMono
 
         if (old == null)
         {
-            old = Instantiate(itemPre);
+            old = Instantiate(tapItemPre);
             listDic.Add(currentIndex, old);
 
             var item = list[currentIndex];
@@ -152,7 +157,7 @@ public class TapReadCourseware : CoursewareMono
 
         audioSource.clip = item.audioClip;
         audioSource.Play();
-        soundDefaultEffect.Play();
+        soundDefaultEffect?.Play();
 
 
 
@@ -174,7 +179,7 @@ public class TapReadCourseware : CoursewareMono
     IEnumerator SoundDidEndPlay(float second)
     {
         yield return new WaitForSeconds(second);
-        soundDefaultEffect.Stop();
+        soundDefaultEffect?.Stop();
     }
 
 
@@ -184,7 +189,7 @@ public class TapReadCourseware : CoursewareMono
     /// -------------
     void HideSoundEffectIfNeeded()
     {
-        soundDefaultEffect.gameObject.SetActive(CheckAudioIsAvaiable());
+        soundDefaultEffect?.gameObject.SetActive(CheckAudioIsAvaiable());
     }
 
     bool CheckAudioIsAvaiable()

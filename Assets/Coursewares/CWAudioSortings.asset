@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a69429b678f7d4926902f4be65e45fa9, type: 3}
+  m_Name: CWAudioSortings
+  m_EditorClassIdentifier: 
+  CoursewarePrefab: {fileID: 2972673130408305561, guid: 5521221fcbb4347efa4e9e4950782d86, type: 3}
+  flatPrefab: {fileID: 3287550151730681603, guid: bb600cd0c8b054d8c98c687a706ec478, type: 3}
+  sortPrefab: {fileID: 8318580565168057395, guid: 5f620d1baa4044a75bb8a6c6857ef564, type: 3}

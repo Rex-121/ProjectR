@@ -242,13 +242,21 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5069168698650182622, guid: 3f36eb0ff453348f6854fda6f1feb63c, type: 3}
+      propertyPath: coursewares.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 619262aee31e94e3e947e35a72e9d84b, type: 2}
+    - target: {fileID: 5069168698650182622, guid: 3f36eb0ff453348f6854fda6f1feb63c, type: 3}
+      propertyPath: coursewares.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c967dcae2fab34e089b573c1aa9853b5, type: 2}
+    - target: {fileID: 5069168698650182622, guid: 3f36eb0ff453348f6854fda6f1feb63c, type: 3}
       propertyPath: coursewares.Array.data[2]
-      value: 2
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 11400000, guid: 0fe87f0d42de74d1998fc65262aeef40, type: 2}
     - target: {fileID: 5069168698650182622, guid: 3f36eb0ff453348f6854fda6f1feb63c, type: 3}
       propertyPath: coursewares.Array.data[3]
-      value: 3
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 11400000, guid: 8fdc51315578f45249594f1cf0e43574, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f36eb0ff453348f6854fda6f1feb63c, type: 3}
 --- !u!1 &1422105181

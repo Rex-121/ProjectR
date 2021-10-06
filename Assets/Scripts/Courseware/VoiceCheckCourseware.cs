@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Bolt;
-public class VoiceCheckCourseware : CoursewareMono
+
+// 音选图Farm
+public class VoiceCheckCourseware : CoursewarePlayer
 {
 
 
     [SerializeField]
     Vector2[] flatPosition;
 
-    [SerializeField]
-    GameObject itemPre;
+    [HideInInspector]
+    public GameObject itemPre;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +40,6 @@ public class VoiceCheckCourseware : CoursewareMono
 
     public override void SelectedGameObject(GameObject obj)
     {
-        Debug.Log("fasdfasd");
         DidEndCourseware(this);
     }
 

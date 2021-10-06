@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Bolt;
 
-public abstract class CWChoose_SO : CoursewareDefault_SO
+public abstract class CWChoose_SO : ScriptableObject
 {
     
     public abstract void DidOnMouseDown(CoursewarePlayer player);
