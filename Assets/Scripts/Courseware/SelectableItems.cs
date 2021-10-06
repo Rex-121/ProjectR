@@ -2,9 +2,6 @@
 
 using Bolt;
 using Ludiq;
-using UnityEngine;
-using System;
-
 [UnitTitle("SelectableState")]
 [UnitCategory("SelectableState")]
 public class SelectableItem_Bolt : Unit

@@ -7,7 +7,7 @@ public class TapLeftRight : MonoBehaviour
 {
 
     [SerializeField]
-    TapNextEvent tapEvent;
+    UnityEvent tapEvent;
 
 
     private void OnMouseDown()
@@ -15,7 +15,3 @@ public class TapLeftRight : MonoBehaviour
         tapEvent.Invoke();
     }
 }
-
-
-[Serializable]
-class TapNextEvent : UnityEvent { }

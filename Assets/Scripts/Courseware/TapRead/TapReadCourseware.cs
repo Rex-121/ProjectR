@@ -45,7 +45,7 @@ public class TapReadCourseware : CoursewareMono
     SoundDefaultEffect soundDefaultEffect;
 
 
-    TapReadItem.Usage[] list;
+    ImageWithAudio_SO[] list;
 
 
     Dictionary<int, GameObject> listDic = new Dictionary<int, GameObject>();
@@ -65,7 +65,7 @@ public class TapReadCourseware : CoursewareMono
 
         GameObject old;
 
-        foreach(var item in listDic.Values)
+        foreach (var item in listDic.Values)
         {
             item.SetActive(false);
         }
@@ -126,7 +126,7 @@ public class TapReadCourseware : CoursewareMono
                 var nowValue = currentIndex + 1;
 
                 if (nowValue > list.Length - 1)
-                {   
+                {
                     didEndThisCourse = true;
                     DidEndCourseware(this);
                 }
@@ -154,7 +154,7 @@ public class TapReadCourseware : CoursewareMono
         audioSource.Play();
         soundDefaultEffect.Play();
 
-   
+
 
         cor = StartCoroutine(SoundDidEndPlay(item.audioClip.length));
 
@@ -199,16 +199,25 @@ class TapItemFakeData
 {
 
 
-    public TapReadItem.Usage[] list
+    public ImageWithAudio_SO[] list
     {
         get
         {
-            var item = new TapReadItem.Usage("https://roobo-test.oss-cn-beijing.aliyuncs.com/appcourse/manager/2021-09-22/c55gk2et0gb0jnjrog3g.wav", "https://roobo-test.oss-cn-beijing.aliyuncs.com/appcourse/manager/2021-07-16/c3on1jln4qt6t4tcobrg.png");
 
-            var i = new TapReadItem.Usage("https://roobo-test.oss-cn-beijing.aliyuncs.com/appcourse/manager/2021-09-30/c5anlcvfnhdbg6qujelg.wav", "https://roobo-test.oss-cn-beijing.aliyuncs.com/appcourse/manager/2021-09-14/c501doibfca5a8elfodg.jpeg");
+            ImageWithAudio_SO so = ScriptableObject.CreateInstance<ImageWithAudio_SO>();
+            so.imageUri = "https://roobo-test.oss-cn-beijing.aliyuncs.com/appcourse/manager/2021-07-16/c3on1jln4qt6t4tcobrg.png";
+            so.audioUri = "https://roobo-test.oss-cn-beijing.aliyuncs.com/appcourse/manager/2021-09-22/c55gk2et0gb0jnjrog3g.wav";
 
 
-            return new[] { item, i };
+            ImageWithAudio_SO so1 = ScriptableObject.CreateInstance<ImageWithAudio_SO>();
+            so1.imageUri = "https://roobo-test.oss-cn-beijing.aliyuncs.com/appcourse/manager/2021-09-14/c501doibfca5a8elfodg.jpeg";
+            so1.audioUri = "https://roobo-test.oss-cn-beijing.aliyuncs.com/appcourse/manager/2021-09-30/c5anlcvfnhdbg6qujelg.wav";
+            //var item = new TapReadItem.Usage("https://roobo-test.oss-cn-beijing.aliyuncs.com/appcourse/manager/2021-09-22/c55gk2et0gb0jnjrog3g.wav", "https://roobo-test.oss-cn-beijing.aliyuncs.com/appcourse/manager/2021-07-16/c3on1jln4qt6t4tcobrg.png");
+
+            //var i = new TapReadItem.Usage("https://roobo-test.oss-cn-beijing.aliyuncs.com/appcourse/manager/2021-09-30/c5anlcvfnhdbg6qujelg.wav", "https://roobo-test.oss-cn-beijing.aliyuncs.com/appcourse/manager/2021-09-14/c501doibfca5a8elfodg.jpeg");
+
+
+            return new[] { so, so1 };
         }
     }
 
