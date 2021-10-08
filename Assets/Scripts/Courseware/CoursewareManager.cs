@@ -32,13 +32,15 @@ public class CoursewareManager : MonoBehaviour
         if (Standard == null)
         {
             Standard = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
         else { Destroy(gameObject); }
     }
 
     void Start()
     {
+
+        currentIndex = -1;
 
         if (findCoursewareInEditor)
         {
@@ -105,6 +107,7 @@ public class CoursewareManager : MonoBehaviour
         return course;
     }
 
+    Coroutine cor;
 
     public void DidEndCourseware(MonoBehaviour b)
     {
@@ -116,13 +119,34 @@ public class CoursewareManager : MonoBehaviour
 
         gb.transform.parent = aboveStage;
 
-        DelayController.Standard.DelayToCall(3, () =>
+        cor = StartCoroutine(DestroyNative(b, gb));
+        //    DelayController.Standard.DelayToCall(3, () =>
+        //{
+        //    aboveStage.gameObject.SetActive(false);
+        //    Destroy(gb);
+        //    Destroy(b.gameObject);
+        //    NextCourse();
+        //});
+    }
+
+    IEnumerator DestroyNative(MonoBehaviour b, GameObject gb)
+    {
+        yield return new WaitForSeconds(3);
+
+        aboveStage.gameObject.SetActive(false);
+        Destroy(gb);
+        Destroy(b.gameObject);
+        NextCourse();
+
+    }
+
+
+    private void OnDestroy()
+    {
+        if (cor != null)
         {
-            aboveStage.gameObject.SetActive(false);
-            Destroy(gb);
-            Destroy(b.gameObject);
-            NextCourse();
-        });
+            StopCoroutine(cor);
+        }
     }
 
     public void SelectedGameObject(GameObject obj)

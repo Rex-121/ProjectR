@@ -18,10 +18,9 @@ public class DelayController : MonoBehaviour
     }
 
 
-    public void DelayToCall(float delay, Action action)
+    public Coroutine DelayToCall(float delay, Action action)
     {
-        if (delay <= 0) action();
-        StartCoroutine(Delay(action, delay));
+       return StartCoroutine(Delay(action, delay));
     }
 
 
