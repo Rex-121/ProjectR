@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: CWVoiceCheck
   m_EditorClassIdentifier: 
   CoursewarePrefab: {fileID: 7906445826746983663, guid: f7e3b3c7d82464148bbe45290db05892, type: 3}
+  CoursewareName: "\u97F3\u9009\u56FE\uFF08\u519C\u573A\uFF09"
   itemPrefab: {fileID: 6888890372375889625, guid: 1a8ac42dcfa3a4318a91f5a82549861f, type: 3}

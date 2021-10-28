@@ -120,13 +120,7 @@ public class CoursewareManager : MonoBehaviour
         gb.transform.parent = aboveStage;
 
         cor = StartCoroutine(DestroyNative(b, gb));
-        //    DelayController.Standard.DelayToCall(3, () =>
-        //{
-        //    aboveStage.gameObject.SetActive(false);
-        //    Destroy(gb);
-        //    Destroy(b.gameObject);
-        //    NextCourse();
-        //});
+
     }
 
     IEnumerator DestroyNative(MonoBehaviour b, GameObject gb)

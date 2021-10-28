@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: CWChoice
   m_EditorClassIdentifier: 
   CoursewarePrefab: {fileID: 6830524957513306759, guid: cea55a073fdbe4a1fa5a83e1903f4084, type: 3}
+  CoursewareName: "\u9009\u62E9\u9898"

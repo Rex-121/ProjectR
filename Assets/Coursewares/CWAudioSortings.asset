@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: CWAudioSortings
   m_EditorClassIdentifier: 
   CoursewarePrefab: {fileID: 2972673130408305561, guid: 5521221fcbb4347efa4e9e4950782d86, type: 3}
+  CoursewareName: "\u6392\u5E8F\u9898"
   flatPrefab: {fileID: 3287550151730681603, guid: bb600cd0c8b054d8c98c687a706ec478, type: 3}
   sortPrefab: {fileID: 8318580565168057395, guid: 5f620d1baa4044a75bb8a6c6857ef564, type: 3}

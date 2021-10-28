@@ -6,14 +6,13 @@ using UnityEngine;
 public abstract class CoursewareDefault_SO : ScriptableObject
 {
 
-    
+
     public GameObject CoursewarePrefab;
+
+
+    public string CoursewareName;
 
 
     public abstract void SetUpCourseware(CoursewarePlayer player);
 
 }
-
-
-
-

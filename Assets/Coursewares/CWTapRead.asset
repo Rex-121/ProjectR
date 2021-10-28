@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CWTapRead
   m_EditorClassIdentifier: 
   CoursewarePrefab: {fileID: 62976462552880567, guid: 7bc0feaf83e5e47019923cffcb697730, type: 3}
+  CoursewareName: "\u70B9\u8BFB\u9898"
   items:
   - {fileID: 11400000, guid: 3dc464b9d253a4351bce284a3c92a383, type: 2}
   - {fileID: 11400000, guid: 50d394ad1148b4a36a1c72e71bc3a3dd, type: 2}
